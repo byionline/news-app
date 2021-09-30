@@ -1,22 +1,19 @@
-import React from 'react';
-import { Typography } from 'antd';
+import { Container, Typography } from '@mui/material';
+import { makeStyles } from '@material-ui/core/styles';
+
 import { Link } from 'react-router-dom';
 import { News } from '../components';
-
-const { Title } = Typography;
+const useStyles = makeStyles(theme => ({
+  container: {
+    paddingTop: theme.spacing(10),
+  },
+}));
 const HomePage = () => {
+  const classes = useStyles();
   return (
-    <>
-      <div className="home-heading-container">
-        <Title level={2} className="home-title">
-          Latest Crypto News
-        </Title>
-        <Title level={3} className="show-more">
-          <Link to="/News">Show More</Link>
-        </Title>
-      </div>
+    <Container className={classes.container}>
       <News />
-    </>
+    </Container>
   );
 };
 export default HomePage;
