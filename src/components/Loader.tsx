@@ -1,10 +1,9 @@
-import React from 'react';
-import { Spin } from 'antd';
-
+import CircularProgress from '@mui/material/CircularProgress';
+import Box from '@mui/material/Box';
 const Loader = () => (
-  <div className="loader">
-    <Spin />
-  </div>
+  <Box sx={{ display: 'flex' }}>
+    <CircularProgress />;
+  </Box>
 );
 
 export default Loader;
