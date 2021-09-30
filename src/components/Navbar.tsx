@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from 'react';
-import { Button, Menu, Typography, Avatar } from 'antd';
-import { Link } from 'react-router-dom';
-import { HomeOutlined, BulbOutlined, MenuOutlined } from '@ant-design/icons';
+import { useState, useEffect } from 'react';
+
 import logoIcon from '../images/Bing_logo.png';
+import { AppBar, Avatar, IconButton, Toolbar, Typography } from '@mui/material';
+import MenuIcon from '@mui/icons-material/Menu';
 interface Size {
   width: number | undefined;
   height: number | undefined;
@@ -34,31 +34,54 @@ const Navbar = () => {
     }
   }, [ScreenSize]);
   return (
-    <div className="nav-container">
-      <div className="logo-container">
-        <Avatar src={logoIcon} size="large" />
-        <Typography.Title level={2} className="logo">
-          <Link to="/">News</Link>
-        </Typography.Title>
-        <Button
-          className="menu-control-container"
-          onClick={() => setActiveMenu(!ActiveMenu)}
+    <AppBar position="static">
+      <Toolbar>
+        <IconButton
+          size="large"
+          edge="start"
+          color="inherit"
+          aria-label="open drawer"
+          sx={{ mr: 2 }}
         >
-          <MenuOutlined />
-        </Button>
-      </div>
-      {ActiveMenu && (
-        <Menu theme="dark">
-          <Menu.Item key="home" icon={<HomeOutlined />}>
-            <Link to="/">Home</Link>
-          </Menu.Item>
-
-          <Menu.Item key="news" icon={<BulbOutlined />}>
-            <Link to="/news">News</Link>
-          </Menu.Item>
-        </Menu>
-      )}
-    </div>
+          <MenuIcon />
+        </IconButton>
+        <Avatar alt="logo" src={logoIcon} sx={{ width: 35, height: 35 }} />
+        <Typography
+          variant="h5"
+          noWrap
+          component="div"
+          sx={{ display: { xs: 'none', sm: 'block' } }}
+        >
+          News
+        </Typography>
+      </Toolbar>
+    </AppBar>
   );
 };
 export default Navbar;
+/* <div className="nav-container">
+  <div className="logo-container">
+    <Avatar src={logoIcon} size="large" />
+    <Typography.Title level={2} className="logo">
+      <Link to="/">News</Link>
+    </Typography.Title>
+    <Button
+      className="menu-control-container"
+      onClick={() => setActiveMenu(!ActiveMenu)}
+    >
+      <MenuOutlined />
+    </Button>
+  </div>
+  {ActiveMenu && (
+    <Menu theme="dark">
+      <Menu.Item key="home" icon={<HomeOutlined />}>
+        <Link to="/">Home</Link>
+      </Menu.Item>
+
+      <Menu.Item key="news" icon={<BulbOutlined />}>
+        <Link to="/news">News</Link>
+      </Menu.Item>
+    </Menu>
+  )}
+</div>
+ */
