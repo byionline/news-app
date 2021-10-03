@@ -3,10 +3,11 @@ import { BrowserRouter as Router } from 'react-router-dom';
 import App from './App';
 
 import { Provider } from 'react-redux';
-import store from './app/store';
+
 import { ThemeProvider } from '@mui/material/styles';
 import theme from './theme';
 import CssBaseline from '@mui/material/CssBaseline';
+import { store } from './app/store';
 ReactDOM.render(
   <Router>
     <Provider store={store}>
